@@ -1,9 +1,7 @@
 package com.example.posts.features.list.presentation
 
-import android.content.res.Resources
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.posts.R
 import com.example.posts.features.list.domain.PostInteractor
 import com.example.posts.features.list.domain.model.Post
 import com.example.posts.features.list.presentation.EventState.Notification
@@ -21,7 +19,6 @@ import kotlinx.coroutines.launch
 class PostListViewModel(
     private val userId: Int,
     private val postInteractor: PostInteractor,
-    private val resources: Resources,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<PostListState>(PostListState.Loading)
@@ -37,14 +34,14 @@ class PostListViewModel(
     fun addFavorite(post: Post) {
         viewModelScope.launch {
             postInteractor.addFavorite(post, userId)
-            _event.emit(Notification(resources.getString(R.string.added_to_favorites)))
+            _event.emit(Notification(true))
         }
     }
 
     fun deleteFavorite(post: Post) {
         viewModelScope.launch {
             postInteractor.deleteFavorite(post, userId)
-            _event.emit(Notification(resources.getString(R.string.removed_from_favorites)))
+            _event.emit(Notification(false))
         }
     }
 

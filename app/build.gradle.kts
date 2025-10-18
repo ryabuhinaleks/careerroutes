@@ -95,4 +95,5 @@ dependencies {
     implementation(project(":users"))
     implementation(project(":posts"))
     implementation(project(":database"))
+    implementation(project(":uicomponents"))
 }

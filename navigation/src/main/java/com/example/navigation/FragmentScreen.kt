@@ -19,5 +19,5 @@ interface DialogScreen {
 interface AppScreens {
     fun getUserListScreen(): FragmentScreen
     fun getPostListByUserScreen(userId: Int): FragmentScreen
-    fun getMainScreen(): FragmentScreen
+    fun getSettingsScreen(): FragmentScreen
 }

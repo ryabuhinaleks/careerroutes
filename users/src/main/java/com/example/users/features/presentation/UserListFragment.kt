@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.BaseFragment
+import com.example.core.R.string.user_list
 import com.example.navigation.FragmentCommand
 import com.example.uicomponents.R
 import com.example.uicomponents.decorator.addSpacingDecorationIfNeeded
@@ -37,8 +38,15 @@ class UserListFragment : BaseFragment(), UserAdapter.Listener {
         setupRecyclerView()
         observeUsers()
         topBar.setRightIcon(TopBarIcon.FILTER) {
-            Log.e("aaaa", "click")
+            navigator.execute(
+                FragmentCommand.Forward(appScreens.getSettingsScreen())
+            )
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.topBar.setTitle(getString(user_list))
     }
 
     override fun onUserClick(user: User) {

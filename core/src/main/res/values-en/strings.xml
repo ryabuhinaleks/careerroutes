@@ -1,0 +1,11 @@
+<resources>
+    <string name="user_list">List of users</string>
+    <string name="posts">Posts</string>
+    <string name="settings">Settings</string>
+    <string name="russian">Russian</string>
+    <string name="english">English</string>
+    <string name="apply">Apply</string>
+    <string name="added_to_favorites">Saved to favorites</string>
+    <string name="removed_from_favorites">Deleted from favorites</string>
+    <string name="settings_applied">Settings applied</string>
+</resources>

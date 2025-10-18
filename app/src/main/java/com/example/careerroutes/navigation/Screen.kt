@@ -2,11 +2,11 @@ package com.example.careerroutes.navigation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.careerroutes.features.test.FirstFragment
+import com.example.careerroutes.features.settings.SettingsFragment
 import com.example.navigation.FragmentScreen
 
-internal class Feature1DetailScreen : FragmentScreen {
-    override val tag: String = "FirstFragment"
+internal class FeatureSettingsScreen : FragmentScreen {
+    override val tag: String = "SettingsFragment"
     override val arguments: Bundle? = null
-    override fun createFragment(): Fragment = FirstFragment()
+    override fun createFragment(): Fragment = SettingsFragment()
 }

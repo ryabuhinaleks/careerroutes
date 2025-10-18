@@ -1,0 +1,11 @@
+<resources>
+    <string name="user_list">Список пользователей</string>
+    <string name="posts">Посты</string>
+    <string name="settings">Настройки</string>
+    <string name="russian">Русский</string>
+    <string name="english">English</string>
+    <string name="apply">Применить</string>
+    <string name="added_to_favorites">Сохранено в избранное</string>
+    <string name="removed_from_favorites">Удалено из избранного</string>
+    <string name="settings_applied">Применены настройки</string>
+</resources>

@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.BaseFragment
+import com.example.core.R as Res
 import com.example.posts.databinding.FragmentPostListBinding
 import com.example.posts.features.list.domain.model.Post
 import com.example.posts.features.list.presentation.adapter.PostAdapter
@@ -88,9 +89,13 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
                 viewModel.event.collect { event ->
                     when (event) {
                         is EventState.Notification -> {
+                            val message = when (event.isAddFavorite) {
+                                true -> Res.string.added_to_favorites
+                                else -> Res.string.removed_from_favorites
+                            }.run(::getString)
                             Snackbar.make(
                                 binding.root,
-                                event.message,
+                                message,
                                 Snackbar.LENGTH_SHORT
                             ).show()
                         }

@@ -22,6 +22,6 @@ val postModule = module {
     single<PostInteractor> { PostInteractorImpl(get(), get(), get()) }
 
     viewModel { (userId: Int) ->
-        PostListViewModel(userId, get(), get())
+        PostListViewModel(userId, get())
     }
 }
