@@ -90,6 +90,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(project(":navigation"))
-    implementation(project(":feature1"))
     implementation(project(":core"))
+    implementation(project(":network"))
+    implementation(project(":users"))
+    implementation(project(":posts"))
+    implementation(project(":database"))
 }

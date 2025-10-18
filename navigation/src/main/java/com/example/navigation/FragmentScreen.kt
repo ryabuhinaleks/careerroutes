@@ -17,7 +17,7 @@ interface DialogScreen {
 }
 
 interface AppScreens {
-   // fun getFeature1MainScreen(): FragmentScreen
-   // fun getFeature1DetailScreen(itemId: Long): FragmentScreen
+    fun getUserListScreen(): FragmentScreen
+    fun getPostListByUserScreen(userId: Int): FragmentScreen
     fun getMainScreen(): FragmentScreen
 }

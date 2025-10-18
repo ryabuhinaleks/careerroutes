@@ -22,7 +22,7 @@ class RootActivity : AppCompatActivity(), HasNavigator {
 
         if (savedInstanceState == null) {
             navigator.execute(
-                FragmentCommand.Replace(appScreens.getMainScreen())
+                FragmentCommand.Replace(appScreens.getUserListScreen())
             )
         }
     }

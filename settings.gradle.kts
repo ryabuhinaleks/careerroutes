@@ -22,5 +22,9 @@ dependencyResolutionManagement {
 rootProject.name = "Career routes"
 include(":app")
 include(":navigation")
-include(":feature1")
 include(":core")
+include(":users")
+include(":uicomponents")
+include(":network")
+include(":posts")
+include(":database")
