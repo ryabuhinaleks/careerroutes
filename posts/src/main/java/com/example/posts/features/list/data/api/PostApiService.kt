@@ -1,6 +1,6 @@
-package com.example.posts.features.data.api
+package com.example.posts.features.list.data.api
 
-import com.example.posts.features.data.model.PostResponse
+import com.example.posts.features.list.data.model.PostResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

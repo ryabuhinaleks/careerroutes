@@ -1,4 +1,4 @@
-package com.example.posts.features.domain.model
+package com.example.posts.features.list.domain.model
 
 data class Post(
     val id: Int,

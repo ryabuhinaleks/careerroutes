@@ -1,21 +1,21 @@
-package com.example.posts.features.presentation
+package com.example.posts.features.list.presentation
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.BaseFragment
 import com.example.posts.databinding.FragmentPostListBinding
-import com.example.posts.features.domain.model.Post
-import com.example.posts.features.presentation.adapter.PostAdapter
+import com.example.posts.features.list.domain.model.Post
+import com.example.posts.features.list.presentation.adapter.PostAdapter
 import com.example.uicomponents.R
-import com.example.uicomponents.decorator.addSpacingDecorationIfNeeded
+import com.example.uicomponents.decorator.addEdgePaddingDecoration
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -41,7 +41,6 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         observeUsers()
-
     }
 
     override fun onDetailPostClick(postId: Int) {
@@ -58,7 +57,10 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
     private fun setupRecyclerView() = with(binding.list) {
         layoutManager = LinearLayoutManager(requireContext())
         adapter = userAdapter
-        addSpacingDecorationIfNeeded(verticalMarginRes = R.dimen.spacing_16)
+        addEdgePaddingDecoration(
+            topPaddingRes = R.dimen.spacing_16,
+            bottomPaddingRes = R.dimen.spacing_16
+        )
     }
 
     private fun observeUsers() = with(binding) {
@@ -71,7 +73,6 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
                         }
                         is PostListState.Error -> {
                             progress.hide()
-                            Log.e("PostList", "Error")
                         }
                         is PostListState.Content -> {
                             progress.hide()
@@ -87,7 +88,11 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
                 viewModel.event.collect { event ->
                     when (event) {
                         is EventState.Notification -> {
-                            Toast.makeText(requireContext(), event.message, Toast.LENGTH_LONG).show()
+                            Snackbar.make(
+                                binding.root,
+                                event.message,
+                                Snackbar.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }

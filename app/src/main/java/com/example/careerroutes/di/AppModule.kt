@@ -1,5 +1,6 @@
 package com.example.careerroutes.di
 
+import android.app.Application
 import androidx.fragment.app.FragmentActivity
 import com.example.careerroutes.R
 import com.example.careerroutes.navigation.AppScreensImpl
@@ -9,6 +10,8 @@ import org.koin.dsl.module
 
 val appModule = module {
     single<AppScreens> { AppScreensImpl() }
+
+    single { get<Application>().resources }
 
     single { (activity: FragmentActivity) ->
         FragmentNavigator(

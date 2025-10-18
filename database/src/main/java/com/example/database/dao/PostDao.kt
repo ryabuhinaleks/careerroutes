@@ -6,12 +6,13 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.database.entity.PostEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PostDao {
 
     @Query("SELECT * FROM posts WHERE userId = :userId")
-    suspend fun getPostsByUserId(userId: Int): List<PostEntity>
+    fun getPostsByUserIdFlow(userId: Int): Flow<List<PostEntity>>
 
     @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
     suspend fun insertPost(post: PostEntity)

@@ -1,4 +1,4 @@
-package com.example.posts.features.data.model
+package com.example.posts.features.list.data.model
 
 import com.google.gson.annotations.SerializedName
 

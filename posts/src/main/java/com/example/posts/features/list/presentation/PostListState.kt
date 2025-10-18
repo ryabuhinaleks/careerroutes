@@ -1,6 +1,6 @@
-package com.example.posts.features.presentation
+package com.example.posts.features.list.presentation
 
-import com.example.posts.features.domain.model.Post
+import com.example.posts.features.list.domain.model.Post
 
 sealed class PostListState {
     data object Loading : PostListState()

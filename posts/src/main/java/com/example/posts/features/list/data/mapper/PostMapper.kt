@@ -1,8 +1,8 @@
-package com.example.posts.features.data.mapper
+package com.example.posts.features.list.data.mapper
 
 import com.example.database.entity.PostEntity
-import com.example.posts.features.data.model.PostResponse
-import com.example.posts.features.domain.model.Post
+import com.example.posts.features.list.data.model.PostResponse
+import com.example.posts.features.list.domain.model.Post
 
 class PostMapper {
 
