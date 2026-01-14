@@ -27,10 +27,6 @@ class PostListViewModel(
     private val _event = MutableSharedFlow<Notification>()
     val event: SharedFlow<Notification> = _event.asSharedFlow()
 
-    init {
-        load()
-    }
-
     fun addFavorite(post: Post) {
         viewModelScope.launch {
             postInteractor.addFavorite(post, userId)
@@ -45,7 +41,7 @@ class PostListViewModel(
         }
     }
 
-    private fun load() {
+    fun load() {
         viewModelScope.launch {
             _state.value = PostListState.Loading
 

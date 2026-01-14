@@ -21,9 +21,13 @@ class UserListViewModel(
 
     private fun load() {
         viewModelScope.launch {
-            _state.value = UserListState.Loading
-            val users = userInteractor.getUsers()
-            _state.value = UserListState.Content(users)
+            try {
+                _state.value = UserListState.Loading
+                val users = userInteractor.getUsers()
+                _state.value = UserListState.Content(users)
+            } catch (ex: Exception) {
+                _state.value = UserListState.Error
+            }
         }
     }
 }

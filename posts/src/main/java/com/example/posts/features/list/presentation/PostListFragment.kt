@@ -40,6 +40,7 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.load()
         setupRecyclerView()
         observeUsers()
     }
