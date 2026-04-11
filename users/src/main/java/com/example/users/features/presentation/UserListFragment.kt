@@ -11,8 +11,8 @@ import com.example.core.BaseFragment
 import com.example.core.R.string.user_list
 import com.example.navigation.FragmentCommand
 import com.example.uicomponents.R
-import com.example.uicomponents.decorator.addSpacingDecorationIfNeeded
-import com.example.uicomponents.topbar.TopBarIcon
+import com.example.uicomponents.old.decorator.addSpacingDecorationIfNeeded
+import com.example.uicomponents.old.topbar.TopBarIcon
 import com.example.users.databinding.FragmentUserListBinding
 import com.example.users.features.domain.model.User
 import com.example.users.features.presentation.adapter.UserAdapter

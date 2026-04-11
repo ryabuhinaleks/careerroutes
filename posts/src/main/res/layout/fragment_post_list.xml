@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_color">
 
-    <com.example.uicomponents.topbar.TopBarView
+    <com.example.uicomponents.old.topbar.TopBarView
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/topBar"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <com.example.uicomponents.loader.LoaderView
+    <com.example.uicomponents.old.loader.LoaderView
         android:id="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -33,6 +33,6 @@
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintBottom_toBottomOf="parent">
 
-    </com.example.uicomponents.loader.LoaderView>
+    </com.example.uicomponents.old.loader.LoaderView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

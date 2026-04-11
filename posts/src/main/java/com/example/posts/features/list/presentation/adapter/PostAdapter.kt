@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.posts.features.list.domain.model.Post
 import com.example.uicomponents.R
-import com.example.uicomponents.cards.postCard.PostCardView
+import com.example.uicomponents.old.postCard.PostCardView
 
 class PostAdapter(
     private val listener: Listener,

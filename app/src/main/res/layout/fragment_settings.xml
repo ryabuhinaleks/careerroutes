@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_color">
 
-    <com.example.uicomponents.topbar.TopBarView
+    <com.example.uicomponents.old.topbar.TopBarView
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="0dp"

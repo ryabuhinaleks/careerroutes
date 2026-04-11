@@ -1,4 +1,4 @@
-package com.example.uicomponents.topbar
+package com.example.uicomponents.old.topbar
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import com.example.uicomponents.R
-import com.example.uicomponents.extensions.setGone
-import com.example.uicomponents.extensions.setVisible
+import com.example.uicomponents.old.extensions.setGone
+import com.example.uicomponents.old.extensions.setVisible
 
 class TopBarView @JvmOverloads constructor(
     context: Context,

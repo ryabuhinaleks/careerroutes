@@ -1,4 +1,4 @@
-package com.example.uicomponents.cards.postCard
+package com.example.uicomponents.old.postCard
 
 import android.content.Context
 import android.util.AttributeSet

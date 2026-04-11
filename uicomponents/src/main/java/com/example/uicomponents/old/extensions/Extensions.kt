@@ -1,4 +1,4 @@
-package com.example.uicomponents.extensions
+package com.example.uicomponents.old.extensions
 
 import android.content.Context
 import android.view.View

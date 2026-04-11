@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     id("kotlin-kapt")
 }
 
@@ -39,6 +40,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
     }
     packagingOptions {
         exclude("META-INF/*.md")
@@ -74,6 +76,20 @@ dependencies {
     implementation(libs.rxkotlin)
     implementation(libs.rxbinding)
     implementation(libs.rxbinding.kotlin)
+
+    // Compose зависимости
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.coil.compose)
+
+    // Activity Compose для интеграции с Activity
+    implementation("androidx.activity:activity-compose:1.9.3")
+
+    debugImplementation(libs.androidx.compose.ui.tooling)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)

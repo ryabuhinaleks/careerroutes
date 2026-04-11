@@ -1,4 +1,4 @@
-package com.example.uicomponents.loader
+package com.example.uicomponents.old.loader
 
 import android.content.Context
 import android.util.AttributeSet

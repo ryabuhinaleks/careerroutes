@@ -15,7 +15,7 @@ import com.example.posts.databinding.FragmentPostListBinding
 import com.example.posts.features.list.domain.model.Post
 import com.example.posts.features.list.presentation.adapter.PostAdapter
 import com.example.uicomponents.R
-import com.example.uicomponents.decorator.addEdgePaddingDecoration
+import com.example.uicomponents.old.decorator.addEdgePaddingDecoration
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
