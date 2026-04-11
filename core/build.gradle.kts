@@ -33,13 +33,8 @@ android {
 }
 
 dependencies {
-    // Базовые Android зависимости
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-
-    // Koin для DI
-    implementation("io.insert-koin:koin-android:3.5.0")
-
-    // Зависимость от navigation модуля
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.koin.android)
     implementation(project(":navigation"))
 }

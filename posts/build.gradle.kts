@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -32,33 +33,33 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose = true
     }
 }
 
 dependencies {
-    // Основные Android зависимости
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.koin.android)
+    implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.androidx.room.ktx)
 
-    // ViewModel и Lifecycle
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-    implementation("androidx.fragment:fragment-ktx:1.6.2")
+    // Compose зависимости
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.coil.compose)
 
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    debugImplementation(libs.androidx.compose.ui.tooling)
 
-    // DI (Koin)
-    implementation("io.insert-koin:koin-android:3.5.0")
-
-    // Network
-    implementation("com.google.code.gson:gson:2.10.1")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-
-    // Room аннотации для DAO и Entity
-    implementation("androidx.room:room-ktx:2.6.0")
-
-    // Модули проекта
     implementation(project(":network"))
     implementation(project(":database"))
     implementation(project(":navigation"))
@@ -66,13 +67,10 @@ dependencies {
     implementation(project(":uicomponents"))
     implementation(project(":testing"))
 
-    // Тестирование
     testImplementation(libs.junit)
-    testImplementation(kotlin("test"))
-    testImplementation("io.mockk:mockk:1.13.8")
-    testImplementation("io.mockk:mockk-agent-jvm:1.13.8")
+    testImplementation(libs.mockk)
+    testImplementation(libs.mockk.agent)
 
-    // Android тестирование
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

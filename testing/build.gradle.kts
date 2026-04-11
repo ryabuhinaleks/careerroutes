@@ -26,18 +26,16 @@ android {
 }
 
 dependencies {
-    // ТОЛЬКО тестовые зависимости
-    api("junit:junit:4.13.2")
-    api("org.mockito:mockito-core:5.8.0")
-    api("org.mockito:mockito-inline:5.2.0")
-    api("org.mockito.kotlin:mockito-kotlin:5.2.1")
-    api("org.mockito:mockito-junit-jupiter:5.8.0")
-    api("androidx.arch.core:core-testing:2.2.0")
-    api("io.reactivex.rxjava2:rxjava:2.2.21")
-    api("io.reactivex.rxjava2:rxandroid:2.1.1")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+    api(libs.junit)
+    api(libs.mockito.core)
+    api(libs.mockito.inline)
+    api(libs.mockito.kotlin)
+    api(libs.mockito.junit.jupiter)
+    api(libs.androidx.core.testing)
+    api(libs.rxjava2)
+    api(libs.rxandroid)
+    api(libs.kotlinx.coroutines.test)
 
-    // Android зависимости если нужны
-    api("androidx.fragment:fragment-ktx:1.6.2")
-    api("androidx.appcompat:appcompat:1.6.1")
+    api(libs.androidx.fragment.ktx)
+    api(libs.androidx.appcompat)
 }
