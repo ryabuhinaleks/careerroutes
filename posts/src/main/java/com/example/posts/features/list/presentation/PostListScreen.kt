@@ -1,6 +1,5 @@
 package com.example.posts.features.list.presentation
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,15 +9,19 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.core.BaseFragment
-import com.example.core.R.string
+import com.example.core.R
 import com.example.posts.features.info.PostInfoBottomSheet
 import com.example.posts.features.list.domain.model.Post
 import com.example.uicomponents.compose.card.postCard.PostCard
@@ -41,15 +44,30 @@ class PostListScreen : BaseFragment() {
                 val userId = arguments?.getInt(USER_ID) ?: 0
                 parametersOf(userId)
             }
-            val state by viewModel.state.collectAsState()
+            val state by viewModel.state.collectAsStateWithLifecycle()
+            val snackbarHostState = remember { SnackbarHostState() }
+
             PostListContent(
                 state = state,
+                snackbarHostState,
                 addFavorite = { viewModel.addFavorite(it) },
                 deleteFavorite = { viewModel.deleteFavorite(it) }
             )
 
             LaunchedEffect(Unit) {
                 viewModel.load()
+
+                viewModel.event.collect { notification ->
+                    when (notification) {
+                        is EventState.Notification -> {
+                            val message = when (notification.isAddFavorite) {
+                                true -> R.string.added_to_favorites
+                                else -> R.string.removed_from_favorites
+                            }.run(::getString)
+                            snackbarHostState.showSnackbar(message, duration = SnackbarDuration.Short)
+                        }
+                    }
+                }
             }
         }
     }
@@ -62,15 +80,19 @@ class PostListScreen : BaseFragment() {
     @Composable
     private fun PostListContent(
         state: PostListState,
+        snackbarHostState: SnackbarHostState,
         addFavorite: (Post) -> Unit,
         deleteFavorite: (Post) -> Unit,
     ) {
         Scaffold(
             topBar = {
                 TopBar(
-                    title = stringResource(string.posts),
+                    title = stringResource(R.string.posts),
                     topBarIcon = TopBarIcon.NONE
                 )
+            },
+            snackbarHost = {
+                SnackbarHost(hostState = snackbarHostState)
             }
         ) { paddingValues ->
             when (state) {
