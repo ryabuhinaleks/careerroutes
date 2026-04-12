@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.uicomponents.R
+import com.example.uicomponents.compose.utils.Dimens
 
 @Composable
 fun ButtonStyle(
@@ -48,7 +48,7 @@ fun test() {
         ButtonStyle(Modifier.fillMaxWidth(), {}) {
             Text(text = "Проверка")
         }
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(Dimens.spaceDefault))
         ButtonStyle(Modifier.fillMaxWidth(), {}) {
             Row {
                 Icon(painter = painterResource(R.drawable.ic_filter_list), null)

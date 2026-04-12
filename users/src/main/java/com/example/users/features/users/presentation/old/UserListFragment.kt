@@ -1,4 +1,4 @@
-package com.example.users.features.users.presentation
+package com.example.users.features.users.presentation.old
 
 import android.os.Bundle
 import android.util.Log
@@ -8,15 +8,16 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.BaseFragment
-import com.example.core.R.string.user_list
+import com.example.core.R
 import com.example.navigation.FragmentCommand
-import com.example.uicomponents.R
 import com.example.uicomponents.compose.topbar.TopBarIcon
 import com.example.uicomponents.old.decorator.addSpacingDecorationIfNeeded
 import com.example.users.databinding.FragmentUserListBinding
 import com.example.users.features.info.InfoBottomSheet
 import com.example.users.features.users.domain.model.User
-import com.example.users.features.users.presentation.adapter.UserAdapter
+import com.example.users.features.users.presentation.UserListState
+import com.example.users.features.users.presentation.UserListViewModel
+import com.example.users.features.users.presentation.old.adapter.UserAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,7 +48,7 @@ class UserListFragment : BaseFragment(), UserAdapter.Listener {
 
     override fun onResume() {
         super.onResume()
-        binding.topBar.setTitle(getString(user_list))
+        binding.topBar.setTitle(getString(R.string.user_list))
     }
 
     override fun onUserClick(user: User) {
@@ -57,14 +58,14 @@ class UserListFragment : BaseFragment(), UserAdapter.Listener {
     }
 
     override fun onUserLongClick(user: User) {
-        InfoBottomSheet.newInstance().apply { setInfo(user) }
-           .show(parentFragmentManager, InfoBottomSheet.TAG)
+        InfoBottomSheet.Companion.newInstance().apply { setInfo(user) }
+           .show(parentFragmentManager, InfoBottomSheet.Companion.TAG)
     }
 
     private fun setupRecyclerView() = with(binding.list) {
         layoutManager = LinearLayoutManager(requireContext())
         adapter = userAdapter
-        addSpacingDecorationIfNeeded(R.dimen.spacing_16, R.dimen.spacing_16)
+        addSpacingDecorationIfNeeded(com.example.uicomponents.R.dimen.spacing_16, com.example.uicomponents.R.dimen.spacing_16)
     }
 
     private fun observeUsers() = with(binding) {

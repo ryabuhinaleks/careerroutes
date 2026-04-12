@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,11 +19,9 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.example.uicomponents.R
+import com.example.uicomponents.compose.utils.Dimens
 
 @Composable
 fun PostCard(
@@ -40,7 +37,7 @@ fun PostCard(
             .background(Color.White)
     ) {
         Row(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(Dimens.spaceDefault)
         ) {
             Column(
                 modifier = Modifier
@@ -50,19 +47,19 @@ fun PostCard(
                     text = title,
                     maxLines = 1,
                     fontWeight = FontWeight.Bold,
-                    fontSize = TextUnit(18f, type = TextUnitType.Sp),
+                    fontSize = Dimens.textTitle,
                     overflow = TextOverflow.Ellipsis
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(Dimens.spaceMedium))
                 Text(
                     text = description,
                     maxLines = 1,
-                    fontSize = TextUnit(14f, type = TextUnitType.Sp),
+                    fontSize = Dimens.textBody,
                     color = colorResource(R.color.gray),
                     overflow = TextOverflow.Ellipsis
                 )
             }
-            IconButton(onClick = onFavoriteClick, modifier = Modifier.size(24.dp)) {
+            IconButton(onClick = onFavoriteClick, modifier = Modifier.size(Dimens.spaceLarge)) {
                 Icon(
                     painter = painterResource(
                         if (isFavorite) R.drawable.ic_favorite else R.drawable.ic_favorite_border

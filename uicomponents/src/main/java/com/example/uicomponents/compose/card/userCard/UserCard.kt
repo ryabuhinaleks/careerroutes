@@ -1,92 +1,69 @@
 package com.example.uicomponents.compose.card.userCard
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
-import androidx.compose.ui.unit.dp
-import com.example.uicomponents.R
+import com.example.uicomponents.compose.utils.Dimens
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun UserCard(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     userName: String,
     userEmail: String,
-    userPhone: String
+    userPhone: String,
+    onClick: () -> Unit = {},
+    onLongClick: () -> Unit = {},
 ) {
     Card(
         modifier = modifier
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
+            .fillMaxWidth()
+            .combinedClickable(
+                onClick = onClick,
+                onLongClick = onLongClick
+            ),
+        shape = RoundedCornerShape(Dimens.cornerDefault),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 4.dp
+            defaultElevation = Dimens.elevationSmall
         )
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(Dimens.spaceDefault)
         ) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 text = userName,
-                fontSize = TextUnit(18f, TextUnitType.Sp),
+                fontSize = Dimens.textTitle,
                 fontWeight = FontWeight.Bold
             )
             Text(
-                modifier = Modifier.fillMaxWidth()
-                    .padding(top = 4.dp),
-                fontSize = TextUnit(14f, TextUnitType.Sp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = Dimens.spaceSmall),
+                fontSize = Dimens.textBody,
                 text = userEmail
             )
             Text(
-                modifier = Modifier.fillMaxWidth()
-                    .padding(top = 4.dp),
-                fontSize = TextUnit(14f, TextUnitType.Sp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = Dimens.spaceSmall),
+                fontSize = Dimens.textBody,
                 text = userPhone
             )
         }
 
-    }
-
-}
-
-@Preview
-@Composable
-fun test() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Red)
-            .padding(16.dp)
-    ) {
-        UserCard(Modifier, "Иван Иванов", "ivan@example.com", "+7 999 999 99 99")
-        Spacer(modifier = Modifier.height(16.dp))
-        UserCard(Modifier, "Иван Иванов", "ivan@example.com", "+7 999 999 99 99")
     }
 }

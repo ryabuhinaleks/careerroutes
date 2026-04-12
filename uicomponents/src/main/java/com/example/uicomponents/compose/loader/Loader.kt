@@ -9,11 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import com.example.uicomponents.compose.utils.Dimens
 
 @Composable
 fun Loader(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier
@@ -22,7 +22,7 @@ fun Loader(
         contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator(
-            modifier = Modifier.size(48.dp),
+            modifier = Modifier.size(Dimens.sizeDefault),
             color = Color.White
         )
     }

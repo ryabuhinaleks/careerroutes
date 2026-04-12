@@ -1,4 +1,4 @@
-package com.example.users.features.users.presentation.adapter
+package com.example.users.features.users.presentation.old.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.users.features.users.domain.model.User
