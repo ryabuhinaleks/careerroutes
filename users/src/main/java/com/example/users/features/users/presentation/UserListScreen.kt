@@ -1,6 +1,5 @@
 package com.example.users.features.users.presentation
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -43,7 +42,7 @@ class UserListScreen : BaseFragment() {
         setContent {
             val viewModel by viewModel<UserListViewModel>()
             val state by viewModel.state.collectAsState()
-            UserListScreen(state)
+            UserListContent(state)
 
             LaunchedEffect(Unit) {
                 viewModel.load()
@@ -51,9 +50,8 @@ class UserListScreen : BaseFragment() {
         }
     }
 
-    @SuppressLint("NotConstructor")
     @Composable
-    fun UserListScreen(state: UserListState) {
+    fun UserListContent(state: UserListState) {
         Scaffold(
             topBar = {
                 TopBar(

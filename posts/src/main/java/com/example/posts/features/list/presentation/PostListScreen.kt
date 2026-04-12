@@ -17,7 +17,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
-import coil.size.Dimension
 import com.example.core.BaseFragment
 import com.example.core.R.string
 import com.example.posts.features.info.PostInfoBottomSheet
@@ -43,7 +42,7 @@ class PostListScreen : BaseFragment() {
                 parametersOf(userId)
             }
             val state by viewModel.state.collectAsState()
-            PostListScreen(
+            PostListContent(
                 state = state,
                 addFavorite = { viewModel.addFavorite(it) },
                 deleteFavorite = { viewModel.deleteFavorite(it) }
@@ -55,32 +54,14 @@ class PostListScreen : BaseFragment() {
         }
     }
 
-    @SuppressLint("NotConstructor")
-    @Composable
-    fun PostListScreen(
-        state: PostListState,
-        addFavorite: (Post) -> Unit,
-        deleteFavorite: (Post) -> Unit,
-    ) {
-        when (state) {
-            is PostListState.Content -> Content(state.posts, addFavorite, deleteFavorite)
-
-            PostListState.Error -> {
-                // Без обработки
-            }
-
-            PostListState.Loading -> Loading()
-        }
-    }
-
     @Composable
     private fun Loading() {
         Loader()
     }
 
     @Composable
-    private fun Content(
-        posts: List<Post>,
+    private fun PostListContent(
+        state: PostListState,
         addFavorite: (Post) -> Unit,
         deleteFavorite: (Post) -> Unit,
     ) {
@@ -92,33 +73,57 @@ class PostListScreen : BaseFragment() {
                 )
             }
         ) { paddingValues ->
-            LazyColumn(
-                modifier = Modifier
-                    .padding(paddingValues),
-                contentPadding = PaddingValues(vertical = Dimens.spaceDefault)
-            ) {
-                items(
-                    items = posts,
-                    key = { it.id }
-                ) { post ->
-                    PostCard(
-                        title = post.title,
-                        description = post.description,
-                        isFavorite = post.isFavorite,
-                        onFavoriteClick = {
-                            if (post.isFavorite) {
-                                deleteFavorite(post)
-                            } else {
-                                addFavorite(post)
-                            }
-                        },
-                        onDetailPostClick = { onDetailPostClick(post.id) },
-                        onDetailPostLongClick = { onDetailPostLongClick(post) }
-                    )
+            when (state) {
+                is PostListState.Content -> Content(
+                    paddingValues,
+                    state.posts,
+                    addFavorite,
+                    deleteFavorite
+                )
+
+                PostListState.Error -> {
+                    // Без обработки
                 }
+
+                PostListState.Loading -> Loading()
             }
         }
     }
+
+    @Composable
+    private fun Content(
+        paddingValues: PaddingValues,
+        posts: List<Post>,
+        addFavorite: (Post) -> Unit,
+        deleteFavorite: (Post) -> Unit,
+    ) {
+        LazyColumn(
+            modifier = Modifier
+                .padding(paddingValues),
+            contentPadding = PaddingValues(vertical = Dimens.spaceDefault)
+        ) {
+            items(
+                items = posts,
+                key = { it.id }
+            ) { post ->
+                PostCard(
+                    title = post.title,
+                    description = post.description,
+                    isFavorite = post.isFavorite,
+                    onFavoriteClick = {
+                        if (post.isFavorite) {
+                            deleteFavorite(post)
+                        } else {
+                            addFavorite(post)
+                        }
+                    },
+                    onDetailPostClick = { onDetailPostClick(post.id) },
+                    onDetailPostLongClick = { onDetailPostLongClick(post) }
+                )
+            }
+        }
+    }
+
 
     private fun onDetailPostClick(postId: Int) {
         Log.e("aaaa", "postId = " + postId)
