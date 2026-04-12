@@ -13,7 +13,7 @@ import com.example.navigation.FragmentCommand
 import com.example.uicomponents.compose.topbar.TopBarIcon
 import com.example.uicomponents.old.decorator.addSpacingDecorationIfNeeded
 import com.example.users.databinding.FragmentUserListBinding
-import com.example.users.features.info.InfoBottomSheet
+import com.example.users.features.info.old.InfoBottomSheet
 import com.example.users.features.users.domain.model.User
 import com.example.users.features.users.presentation.UserListState
 import com.example.users.features.users.presentation.UserListViewModel

@@ -1,4 +1,4 @@
-package com.example.users.features.info
+package com.example.users.features.info.old
 
 import android.os.Bundle
 import android.view.LayoutInflater

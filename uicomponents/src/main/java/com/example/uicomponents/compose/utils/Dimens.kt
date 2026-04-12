@@ -19,7 +19,7 @@ object Dimens {
 
 
     // Corner (dp)
-    val cornerSmall = 4.dp
+    val cornerSmall = 2.dp
     val cornerMedium = 8.dp
     val cornerDefault = 12.dp
     val cornerLarge = 16.dp
@@ -36,4 +36,9 @@ object Dimens {
 
     // TopBar (dp)
     val topbar = 56.dp
+
+    //BS
+    val bsWidth = 40.dp
+    val bsHeight = 4.dp
+
 }

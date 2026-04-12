@@ -14,6 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
@@ -25,7 +28,8 @@ import com.example.uicomponents.compose.loader.Loader
 import com.example.uicomponents.compose.topbar.TopBar
 import com.example.uicomponents.compose.topbar.TopBarIcon
 import com.example.uicomponents.compose.utils.Dimens
-import com.example.users.features.info.InfoBottomSheet
+import com.example.users.features.info.InfoBottomSheetScreen
+import com.example.users.features.info.UserInfoBottomSheet
 import com.example.users.features.users.domain.model.User
 import com.example.users.features.users.presentation.UserListState.Content
 import com.example.users.features.users.presentation.UserListState.Error
@@ -87,6 +91,9 @@ class UserListScreen : BaseFragment() {
         paddingValues: PaddingValues,
         users: List<User>,
     ) {
+        var showBottomSheet by remember { mutableStateOf(false) }
+        var selectedUser by remember { mutableStateOf<User?>(null) }
+
         LazyColumn(
             modifier = Modifier
                 .padding(paddingValues)
@@ -103,9 +110,22 @@ class UserListScreen : BaseFragment() {
                     userEmail = user.email,
                     userPhone = user.phone,
                     onClick = { onUserClick(user) },
-                    onLongClick = { onUserLongClick(user) }
+                    onLongClick = {
+                        showBottomSheet = true
+                        selectedUser = user
+                    }
                 )
             }
+        }
+
+        if (showBottomSheet && selectedUser != null) {
+            UserInfoBottomSheet(
+                user = selectedUser,
+                onDismiss = {
+                    showBottomSheet = false
+                    selectedUser = null
+                }
+            )
         }
     }
 
@@ -116,8 +136,8 @@ class UserListScreen : BaseFragment() {
     }
 
     private fun onUserLongClick(user: User) {
-        InfoBottomSheet.newInstance().apply { setInfo(user) }
-            .show(parentFragmentManager, InfoBottomSheet.TAG)
+        InfoBottomSheetScreen.newInstance().apply { setInfo(user) }
+            .show(parentFragmentManager, InfoBottomSheetScreen.TAG)
     }
 
     private fun onFilterClick() {
