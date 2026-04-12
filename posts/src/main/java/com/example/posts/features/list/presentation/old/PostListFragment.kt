@@ -1,4 +1,4 @@
-package com.example.posts.features.list.presentation
+package com.example.posts.features.list.presentation.old
 
 import android.os.Bundle
 import android.util.Log
@@ -10,11 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.BaseFragment
-import com.example.core.R as Res
 import com.example.posts.databinding.FragmentPostListBinding
 import com.example.posts.features.info.PostInfoBottomSheet
 import com.example.posts.features.list.domain.model.Post
-import com.example.posts.features.list.presentation.adapter.PostAdapter
+import com.example.posts.features.list.presentation.EventState
+import com.example.posts.features.list.presentation.PostListState
+import com.example.posts.features.list.presentation.PostListViewModel
+import com.example.posts.features.list.presentation.old.adapter.PostAdapter
 import com.example.uicomponents.R
 import com.example.uicomponents.old.decorator.addEdgePaddingDecoration
 import com.google.android.material.snackbar.Snackbar
@@ -51,8 +53,8 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
     }
 
     override fun onDetailPostLongClick(post: Post) {
-        PostInfoBottomSheet.newInstance().apply { setInfo(post) }
-            .show(parentFragmentManager, PostInfoBottomSheet.TAG)
+        PostInfoBottomSheet.Companion.newInstance().apply { setInfo(post) }
+            .show(parentFragmentManager, PostInfoBottomSheet.Companion.TAG)
     }
 
     override fun onFavorite(post: Post) {
@@ -97,8 +99,8 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
                     when (event) {
                         is EventState.Notification -> {
                             val message = when (event.isAddFavorite) {
-                                true -> Res.string.added_to_favorites
-                                else -> Res.string.removed_from_favorites
+                                true -> com.example.core.R.string.added_to_favorites
+                                else -> com.example.core.R.string.removed_from_favorites
                             }.run(::getString)
                             Snackbar.make(
                                 binding.root,

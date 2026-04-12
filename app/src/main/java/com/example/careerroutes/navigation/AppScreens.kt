@@ -16,8 +16,12 @@ class AppScreensImpl(
         }
     }
 
-    override fun getPostListByUserScreen(userId: Int): FragmentScreen =
-        PostNavigationProvider.providePostListScreen(userId)
+    override fun getPostListByUserScreen(userId: Int): FragmentScreen{
+        return when (isCompose) {
+            true -> PostNavigationProvider.providePostListComposeScreen(userId)
+            else -> PostNavigationProvider.providePostListScreen(userId)
+        }
+    }
 
     override fun getSettingsScreen(): FragmentScreen =
         FeatureSettingsScreen()

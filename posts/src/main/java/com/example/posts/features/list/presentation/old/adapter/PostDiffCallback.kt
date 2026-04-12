@@ -1,4 +1,4 @@
-package com.example.posts.features.list.presentation.adapter
+package com.example.posts.features.list.presentation.old.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.posts.features.list.domain.model.Post

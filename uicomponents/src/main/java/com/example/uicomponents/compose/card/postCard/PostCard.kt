@@ -1,6 +1,8 @@
 package com.example.uicomponents.compose.card.postCard
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,18 +25,25 @@ import androidx.compose.ui.unit.dp
 import com.example.uicomponents.R
 import com.example.uicomponents.compose.utils.Dimens
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun PostCard(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     title: String,
     description: String,
     isFavorite: Boolean,
     onFavoriteClick: () -> Unit,
+    onDetailPostClick: () -> Unit,
+    onDetailPostLongClick: () -> Unit,
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
             .background(Color.White)
+            .combinedClickable(
+                onClick = onDetailPostClick,
+                onLongClick = onDetailPostLongClick
+            ),
     ) {
         Row(
             modifier = Modifier.padding(Dimens.spaceDefault)
@@ -74,5 +83,4 @@ fun PostCard(
             color = colorResource(R.color.divider_color)
         )
     }
-
 }

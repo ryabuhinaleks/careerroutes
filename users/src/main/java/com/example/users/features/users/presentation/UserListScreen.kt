@@ -1,5 +1,6 @@
 package com.example.users.features.users.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -41,11 +43,15 @@ class UserListScreen : BaseFragment() {
         setContent {
             val viewModel by viewModel<UserListViewModel>()
             val state by viewModel.state.collectAsState()
-
             UserListScreen(state)
+
+            LaunchedEffect(Unit) {
+                viewModel.load()
+            }
         }
     }
 
+    @SuppressLint("NotConstructor")
     @Composable
     fun UserListScreen(state: UserListState) {
         Scaffold(
