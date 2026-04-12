@@ -1,9 +1,9 @@
-package com.example.users.features.data
+package com.example.users.features.users.data
 
-import com.example.users.features.data.api.UserApiService
-import com.example.users.features.data.mapper.UserMapper
-import com.example.users.features.domain.UserInteractor
-import com.example.users.features.domain.model.User
+import com.example.users.features.users.data.api.UserApiService
+import com.example.users.features.users.data.mapper.UserMapper
+import com.example.users.features.users.domain.UserInteractor
+import com.example.users.features.users.domain.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.BaseFragment
 import com.example.core.R as Res
 import com.example.posts.databinding.FragmentPostListBinding
+import com.example.posts.features.info.PostInfoBottomSheet
 import com.example.posts.features.list.domain.model.Post
 import com.example.posts.features.list.presentation.adapter.PostAdapter
 import com.example.uicomponents.R
@@ -47,6 +48,11 @@ class PostListFragment : BaseFragment(), PostAdapter.Listener {
 
     override fun onDetailPostClick(postId: Int) {
         Log.e("aaaa", "postId = " + postId)
+    }
+
+    override fun onDetailPostLongClick(post: Post) {
+        PostInfoBottomSheet.newInstance().apply { setInfo(post) }
+            .show(parentFragmentManager, PostInfoBottomSheet.TAG)
     }
 
     override fun onFavorite(post: Post) {

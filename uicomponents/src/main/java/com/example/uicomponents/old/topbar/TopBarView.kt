@@ -7,13 +7,14 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.withStyledAttributes
 import com.example.uicomponents.R
+import com.example.uicomponents.compose.topbar.TopBarIcon
 import com.example.uicomponents.old.extensions.setGone
 import com.example.uicomponents.old.extensions.setVisible
 
 class TopBarView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+    defStyleAttr: Int = 0,
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     private val titleView: TextView
@@ -41,13 +42,10 @@ class TopBarView @JvmOverloads constructor(
                 setVisible()
                 setImageResource(R.drawable.ic_filter_list)
             }
+
             else -> setGone()
         }
         setOnClickListener { listener() }
     }
 }
 
-enum class TopBarIcon {
-    NONE,
-    FILTER
-}

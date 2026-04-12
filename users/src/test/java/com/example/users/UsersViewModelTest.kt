@@ -1,8 +1,8 @@
 import com.example.testing.BaseCoroutineTest
-import com.example.users.features.domain.UserInteractor
-import com.example.users.features.domain.model.User
-import com.example.users.features.presentation.UserListState
-import com.example.users.features.presentation.UserListViewModel
+import com.example.users.features.users.domain.UserInteractor
+import com.example.users.features.users.domain.model.User
+import com.example.users.features.users.presentation.UserListState
+import com.example.users.features.users.presentation.UserListViewModel
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.confirmVerified

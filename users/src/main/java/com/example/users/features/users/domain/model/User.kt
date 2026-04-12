@@ -1,4 +1,4 @@
-package com.example.users.features.domain.model
+package com.example.users.features.users.domain.model
 
 data class User(
     val id: Int,

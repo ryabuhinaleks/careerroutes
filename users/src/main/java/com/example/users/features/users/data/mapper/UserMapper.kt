@@ -1,7 +1,7 @@
-package com.example.users.features.data.mapper
+package com.example.users.features.users.data.mapper
 
-import com.example.users.features.data.model.UserResponse
-import com.example.users.features.domain.model.User
+import com.example.users.features.users.data.model.UserResponse
+import com.example.users.features.users.domain.model.User
 
 class UserMapper {
 

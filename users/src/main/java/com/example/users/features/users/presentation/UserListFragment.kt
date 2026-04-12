@@ -1,4 +1,4 @@
-package com.example.users.features.presentation
+package com.example.users.features.users.presentation
 
 import android.os.Bundle
 import android.util.Log
@@ -11,11 +11,12 @@ import com.example.core.BaseFragment
 import com.example.core.R.string.user_list
 import com.example.navigation.FragmentCommand
 import com.example.uicomponents.R
+import com.example.uicomponents.compose.topbar.TopBarIcon
 import com.example.uicomponents.old.decorator.addSpacingDecorationIfNeeded
-import com.example.uicomponents.old.topbar.TopBarIcon
 import com.example.users.databinding.FragmentUserListBinding
-import com.example.users.features.domain.model.User
-import com.example.users.features.presentation.adapter.UserAdapter
+import com.example.users.features.info.InfoBottomSheet
+import com.example.users.features.users.domain.model.User
+import com.example.users.features.users.presentation.adapter.UserAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -53,6 +54,11 @@ class UserListFragment : BaseFragment(), UserAdapter.Listener {
         navigator.execute(
             FragmentCommand.Forward(appScreens.getPostListByUserScreen(user.id))
         )
+    }
+
+    override fun onUserLongClick(user: User) {
+        InfoBottomSheet.newInstance().apply { setInfo(user) }
+           .show(parentFragmentManager, InfoBottomSheet.TAG)
     }
 
     private fun setupRecyclerView() = with(binding.list) {

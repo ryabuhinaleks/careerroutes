@@ -1,6 +1,6 @@
-package com.example.users.features.presentation
+package com.example.users.features.users.presentation
 
-import com.example.users.features.domain.model.User
+import com.example.users.features.users.domain.model.User
 
 sealed class UserListState {
     data object Loading : UserListState()

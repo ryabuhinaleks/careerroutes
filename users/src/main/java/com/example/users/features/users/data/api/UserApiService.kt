@@ -1,6 +1,6 @@
-package com.example.users.features.data.api
+package com.example.users.features.users.data.api
 
-import com.example.users.features.data.model.UserResponse
+import com.example.users.features.users.data.model.UserResponse
 import retrofit2.http.GET
 
 interface UserApiService {

@@ -40,11 +40,16 @@ class PostAdapter(
             postCardView.setOnClickListener {
                 listener.onDetailPostClick(post.id)
             }
+            setOnLongClickListener {
+                listener.onDetailPostLongClick(post)
+                true
+            }
         }
     }
 
     interface Listener {
         fun onDetailPostClick(postId: Int)
+        fun onDetailPostLongClick(post: Post)
         fun onFavorite(post: Post)
     }
 }
