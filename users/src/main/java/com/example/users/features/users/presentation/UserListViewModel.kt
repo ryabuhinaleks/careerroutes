@@ -20,7 +20,6 @@ class UserListViewModel(
         viewModelScope.launch {
             try {
                 _state.value = UserListState.Loading
-                delay(2000)
                 val users = userInteractor.getUsers()
                 _state.value = UserListState.Content(users)
             } catch (ex: Exception) {

@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
@@ -85,11 +87,16 @@ class PostListScreen : BaseFragment() {
         deleteFavorite: (Post) -> Unit,
     ) {
         Scaffold(
+            modifier = Modifier
+                .fillMaxSize()
+                .safeContentPadding(),
             topBar = {
                 TopBar(
                     title = stringResource(R.string.posts),
-                    topBarIcon = TopBarIcon.NONE
-                )
+                    topBarIcon = TopBarIcon.FAVORITE
+                ) {
+
+                }
             },
             snackbarHost = {
                 SnackbarHost(hostState = snackbarHostState)

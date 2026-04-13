@@ -18,14 +18,15 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:src="@drawable/blog"/>
+        android:src="@drawable/blog" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User name"
         android:layout_marginTop="@dimen/spacing_8"
+        android:text="User name"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -35,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_8"
         android:text="email"
-        android:textSize="16sp"/>
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
 </LinearLayout>

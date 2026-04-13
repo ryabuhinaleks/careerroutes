@@ -1,9 +1,11 @@
 package com.example.posts.features.info
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.posts.R
 import com.example.posts.databinding.BottomSheetPostBinding
 import com.example.posts.features.list.domain.model.Post
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -25,6 +27,7 @@ class PostInfoBottomSheet : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         title.text = post.title
         description.text = post.description
+        root.setBackgroundResource(R.drawable.bottom_sheet_rounded)
     }
 
     fun setInfo(post: Post) {

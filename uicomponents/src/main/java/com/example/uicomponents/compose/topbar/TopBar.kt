@@ -1,5 +1,6 @@
 package com.example.uicomponents.compose.topbar
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,7 +30,7 @@ fun TopBar(
     modifier: Modifier = Modifier,
     title: String,
     topBarIcon: TopBarIcon,
-    onFilterClick: () -> Unit = {},
+    onMenuClick: () -> Unit = {},
 ) {
     Column(
         modifier = modifier
@@ -51,14 +52,13 @@ fun TopBar(
                     modifier = Modifier.weight(1f),
                     fontSize = 18.sp
                 )
-                if (topBarIcon == TopBarIcon.FILTER) {
+                topBarIcon.res?.let {
                     IconButton(
-                        modifier = Modifier
-                            .size(Dimens.sizeMedium),
-                        onClick = onFilterClick
+                        modifier = Modifier.size(Dimens.sizeMedium),
+                        onClick = onMenuClick
                     ) {
                         Icon(
-                            painter = painterResource(R.drawable.ic_filter_list),
+                            painter = painterResource(it),
                             contentDescription = "filter"
                         )
                     }
@@ -72,7 +72,8 @@ fun TopBar(
     }
 }
 
-enum class TopBarIcon {
-    NONE,
-    FILTER
+enum class TopBarIcon(@DrawableRes val res: Int? = null) {
+    NONE(),
+    FILTER(R.drawable.ic_filter_list),
+    FAVORITE(R.drawable.ic_favorites)
 }
