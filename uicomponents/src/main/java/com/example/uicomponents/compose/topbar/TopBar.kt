@@ -30,6 +30,7 @@ fun TopBar(
     modifier: Modifier = Modifier,
     title: String,
     topBarIcon: TopBarIcon,
+    visibleDivider: Boolean = true,
     onMenuClick: () -> Unit = {},
 ) {
     Column(
@@ -65,10 +66,12 @@ fun TopBar(
                 }
             }
         }
-        HorizontalDivider(
-            thickness = 1.dp,
-            color = colorResource(R.color.divider_color)
-        )
+        if (visibleDivider) {
+            HorizontalDivider(
+                thickness = 1.dp,
+                color = colorResource(R.color.divider_color)
+            )
+        }
     }
 }
 

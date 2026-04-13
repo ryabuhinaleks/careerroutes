@@ -6,6 +6,8 @@ import kotlinx.coroutines.flow.Flow
 interface PostInteractor {
     fun getPosts(userId: Int): Flow<List<Post>>
     fun getFavorite(userId: Int): Flow<List<Post>>
+    fun getFavorites(): Flow<List<Post>>
     suspend fun addFavorite(post: Post, userId: Int)
     suspend fun deleteFavorite(post: Post, userId: Int)
+    suspend fun deleteFavoriteByPostId(postId: Int)
 }

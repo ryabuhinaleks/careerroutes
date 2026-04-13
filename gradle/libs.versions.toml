@@ -31,7 +31,7 @@ coreTesting = "2.2.0"
 coroutinesTest = "1.10.2"
 mockk = "1.13.8"
 
-compose-bom = "2024.11.00"
+compose-bom = "2026.03.01"
 coil = "2.7.0"
 
 [libraries]

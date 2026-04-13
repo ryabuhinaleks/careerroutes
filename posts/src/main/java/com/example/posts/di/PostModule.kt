@@ -2,6 +2,7 @@ package com.example.posts.di
 
 import com.example.database.AppDatabase
 import com.example.database.dao.PostDao
+import com.example.posts.features.favorite.presentation.FavoriteListViewModel
 import com.example.posts.features.list.data.PostInteractorImpl
 import com.example.posts.features.list.data.api.PostApiService
 import com.example.posts.features.list.data.mapper.PostMapper
@@ -23,5 +24,9 @@ val postModule = module {
 
     viewModel { (userId: Int) ->
         PostListViewModel(userId, get())
+    }
+
+    viewModel {
+        FavoriteListViewModel(get())
     }
 }

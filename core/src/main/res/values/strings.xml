@@ -1,6 +1,7 @@
 <resources>
     <string name="user_list">Список пользователей</string>
     <string name="posts">Посты</string>
+    <string name="favorite">Избранное</string>
     <string name="settings">Настройки</string>
     <string name="russian">Русский</string>
     <string name="english">English</string>

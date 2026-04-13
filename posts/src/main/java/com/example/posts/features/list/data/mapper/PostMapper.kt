@@ -14,11 +14,12 @@ class PostMapper {
         )
     }
 
-    fun toDomain(postEntity: PostEntity): Post {
+    fun toDomain(postEntity: PostEntity, isFavorite: Boolean = false): Post {
         return Post(
             id = postEntity.id,
             title = postEntity.title,
-            description = postEntity.body
+            description = postEntity.body,
+            isFavorite = isFavorite
         )
     }
 

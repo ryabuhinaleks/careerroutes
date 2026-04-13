@@ -25,4 +25,7 @@ class AppScreensImpl(
 
     override fun getSettingsScreen(): FragmentScreen =
         FeatureSettingsScreen()
+
+    override fun getFavoriteListComposeScreen(): FragmentScreen =
+        PostNavigationProvider.provideFavoriteListComposeScreen()
 }

@@ -20,4 +20,5 @@ interface AppScreens {
     fun getUserListScreen(): FragmentScreen
     fun getPostListByUserScreen(userId: Int): FragmentScreen
     fun getSettingsScreen(): FragmentScreen
+    fun getFavoriteListComposeScreen(): FragmentScreen
 }

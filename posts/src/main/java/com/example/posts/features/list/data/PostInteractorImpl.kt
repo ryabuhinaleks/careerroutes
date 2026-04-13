@@ -29,11 +29,22 @@ class PostInteractorImpl(
             .flowOn(Dispatchers.Default)
     }
 
+    override fun getFavorites(): Flow<List<Post>> {
+        return postDao.getFavorites()
+            .map { posts -> posts.map { mapper.toDomain(it, isFavorite = true) } }
+            .flowOn(Dispatchers.Default)
+    }
+
     override suspend fun addFavorite(post: Post, userId: Int) {
         postDao.insertPost(mapper.toEntity(post, userId))
     }
 
     override suspend fun deleteFavorite(post: Post, userId: Int) {
         postDao.deletePost(mapper.toEntity(post, userId))
+    }
+
+    override suspend fun deleteFavoriteByPostId(postId: Int) {
+        val postEntity = postDao.getPost(postId)
+        postDao.deletePost(postEntity)
     }
 }
