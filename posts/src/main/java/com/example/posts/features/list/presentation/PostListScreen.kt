@@ -52,9 +52,9 @@ class PostListScreen : BaseFragment() {
 
             PostListContent(
                 state = state,
-                snackbarHostState,
-                addFavorite = { viewModel.addFavorite(it) },
-                deleteFavorite = { viewModel.deleteFavorite(it) }
+                snackbarHostState = snackbarHostState,
+                addFavorite = viewModel::addFavorite,
+                deleteFavorite = viewModel::deleteFavorite,
             )
 
             LaunchedEffect(Unit) {
@@ -73,11 +73,6 @@ class PostListScreen : BaseFragment() {
                 }
             }
         }
-    }
-
-    @Composable
-    private fun Loading() {
-        Loader()
     }
 
     @Composable
@@ -121,6 +116,11 @@ class PostListScreen : BaseFragment() {
     }
 
     @Composable
+    private fun Loading() {
+        Loader()
+    }
+
+    @Composable
     private fun Content(
         paddingValues: PaddingValues,
         posts: List<Post>,
@@ -128,8 +128,7 @@ class PostListScreen : BaseFragment() {
         deleteFavorite: (Post) -> Unit,
     ) {
         LazyColumn(
-            modifier = Modifier
-                .padding(paddingValues),
+            modifier = Modifier.padding(paddingValues),
             contentPadding = PaddingValues(vertical = Dimens.spaceDefault)
         ) {
             items(

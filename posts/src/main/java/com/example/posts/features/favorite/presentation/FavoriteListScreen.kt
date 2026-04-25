@@ -52,8 +52,8 @@ class FavoriteListScreen : BaseFragment() {
                 query = query,
                 state = state,
                 snackbarHostState = snackbarHostState,
-                deleteFavorite = { viewModel.deleteFavorite(it) },
-                onChangeQuery = { viewModel.onChangeQuery(it) }
+                deleteFavorite = viewModel::deleteFavorite,
+                onChangeQuery = viewModel::onChangeQuery
             )
 
             LaunchedEffect(Unit) {
