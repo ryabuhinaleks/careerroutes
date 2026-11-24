@@ -37,16 +37,17 @@ import org.koin.core.parameter.parametersOf
 
 class PostListScreen : BaseFragment() {
 
+    val viewModel by viewModel<PostListViewModel> {
+        val userId = arguments?.getInt(USER_ID) ?: 0
+        parametersOf(userId)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ) = ComposeView(requireContext()).apply {
         setContent {
-            val viewModel by viewModel<PostListViewModel> {
-                val userId = arguments?.getInt(USER_ID) ?: 0
-                parametersOf(userId)
-            }
             val state by viewModel.state.collectAsStateWithLifecycle()
             val snackbarHostState = remember { SnackbarHostState() }
 

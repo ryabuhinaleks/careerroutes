@@ -36,6 +36,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteListScreen : BaseFragment() {
 
+    val viewModel by viewModel<FavoriteListViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -44,7 +46,6 @@ class FavoriteListScreen : BaseFragment() {
         setContent {
             val snackbarHostState = remember { SnackbarHostState() }
 
-            val viewModel by viewModel<FavoriteListViewModel>()
             val state by viewModel.state.collectAsStateWithLifecycle()
             val query by viewModel.query.collectAsStateWithLifecycle()
 
